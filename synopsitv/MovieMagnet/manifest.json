@@ -1,0 +1,56 @@
+{
+    "manifest_version": 2,
+
+    "name": "MovieMagnet",
+    "description": "Magnet links for your movies.",
+    "version": "1.0.2",
+
+    "background": {
+        "scripts": [
+            "request.js",
+            "piratebay.js",
+            "synopsi-api.js",
+            "background.js"
+        ]
+    },
+
+    "icons": {
+        "48": "piratebay_48.png"
+    },
+
+    "web_accessible_resources": [
+        "piratebay_lists.png",
+        "piratebay_csfd.png",
+        "piratebay_imdb.png",
+        "piratebay_synopsi.png",
+        "piratebay_letterboxd.png",
+        "piratebay_jinni.png",
+        "piratebay_48.png"
+    ],
+
+    "browser_action": {
+        "default_icon": "piratebay_48.png",
+        "default_title": "MovieMagnet"
+    },
+
+    "permissions": [
+        "http://*/", "https://*/"
+    ],
+
+    "content_scripts": [{
+        "matches": ["*://*.imdb.com/*"],
+        "js": ["common.js", "imdb.js"]
+    }, {
+        "matches": ["*://*.synopsi.tv/*"],
+        "js": ["common.js", "synopsi.js"]
+    }, {
+        "matches": ["*://*.csfd.cz/*"],
+        "js": ["common.js", "csfd.js"]
+    }, {
+        "matches": ["*://*.letterboxd.com/*"],
+        "js": ["common.js", "letterboxd.js"]
+    }, {
+        "matches": ["*://*.jinni.com/*"],
+        "js": ["common.js", "jinni.js"]
+    }]
+}
